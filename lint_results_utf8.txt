@@ -1,0 +1,39 @@
+﻿
+> eman-portfolio@0.0.0 lint
+> eslint .
+
+
+C:\Users\shabb\OneDrive\Desktop\eman portfolio\src\components\layout\Footer.jsx
+  221:41  error  'Icon' is defined but never used  no-unused-vars
+
+C:\Users\shabb\OneDrive\Desktop\eman portfolio\src\components\layout\Navbar.jsx
+   84:13  error  Duplicate key 'background'  no-dupe-keys
+  113:17  error  Duplicate key 'background'  no-dupe-keys
+
+C:\Users\shabb\OneDrive\Desktop\eman portfolio\src\components\sections\About.jsx
+  110:33  error  'Icon' is defined but never used  no-unused-vars
+
+C:\Users\shabb\OneDrive\Desktop\eman portfolio\src\components\sections\Contact.jsx
+  177:36  error  'Icon' is defined but never used  no-unused-vars
+  247:39  error  'Icon' is defined but never used  no-unused-vars
+
+C:\Users\shabb\OneDrive\Desktop\eman portfolio\src\components\sections\Hero.jsx
+   58:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  56 |         timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
+  57 |       } else {
+> 58 |         setDeleting(false);
+     |         ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  59 |         setRoleIndex(i => (i + 1) % ROLES.length);
+  60 |       }
+  61 |     }  react-hooks/set-state-in-effect
+  357:26  error  'Icon' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+
+Γ£û 8 problems (8 errors, 0 warnings)
+
