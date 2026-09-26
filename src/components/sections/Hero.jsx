@@ -1,38 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
 import { ArrowDown, Download } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import cvFile from '../../assets/CV - Eman.pdf';
+import cvFile from '../../assets/Eman Resume.pdf';
 
 const ROLES = ['Software Developer', 'Mobile App Developer', 'Desktop App Developer'];
 
 const Hero = () => {
-  const nameRef = useRef(null);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
   const [deleting, setDeleting] = useState(false);
   const [showCursor, setShowCursor] = useState(true);
-
-  // GSAP letter stagger for "Eman"
-  useEffect(() => {
-    if (!nameRef.current) return;
-    const letters = nameRef.current.querySelectorAll('.letter');
-    gsap.fromTo(
-      letters,
-      { y: 80, opacity: 0, rotateX: -90, scale: 0.8 },
-      {
-        y: 0,
-        opacity: 1,
-        rotateX: 0,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-        delay: 0.3,
-      }
-    );
-  }, []);
 
   // Blinking cursor effect
   useEffect(() => {
@@ -169,12 +147,11 @@ const Hero = () => {
               boxShadow: '0 0 12px #8b5cf6',
             }}
           />
-          AVAILABLE FOR HIRING
+          OPEN TO OPPORTUNITIES
         </motion.div>
 
         {/* Name with enhanced animation */}
         <div
-          ref={nameRef}
           style={{
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: 'clamp(3.5rem, 12vw, 8rem)',
@@ -219,12 +196,13 @@ const Hero = () => {
             fontFamily: 'Space Grotesk, sans-serif',
             fontSize: 'clamp(1.25rem, 3vw, 2rem)',
             fontWeight: 500,
-            height: '2.5rem',
+            minHeight: '3rem',
             marginBottom: '1.5rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: '0.5rem',
+            flexWrap: 'wrap',
+            gap: '0.35rem 0.5rem',
           }}
         >
           <span style={{ color: '#94a3b8' }}>I&apos;m a </span>
@@ -261,7 +239,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.4, duration: 0.6, ease: 'easeOut' }}
           style={{
-            color: '#64748b',
+            color: '#94a3b8',
             fontSize: 'clamp(0.95rem, 2vw, 1.15rem)',
             maxWidth: '600px',
             margin: '0 auto 2.5rem',
@@ -286,7 +264,7 @@ const Hero = () => {
         >
           <motion.a
             href={cvFile}
-            download="CV-Eman.pdf"
+            download="Eman Resume.pdf"
             whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.97 }}
             style={{
@@ -365,8 +343,9 @@ const Hero = () => {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.15, y: -3 }}
-              whileTap={{ scale: 0.9 }}
+              aria-label={label}
+              whileHover={{ scale: 1.08, y: -3 }}
+              whileTap={{ scale: 0.94 }}
               className="social-link"
               style={{
                 width: 48,
@@ -381,21 +360,31 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <motion.div
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '2rem',
+          left: 0,
+          right: 0,
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
+      <motion.button
+        type="button"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2, duration: 0.6 }}
         style={{
-          position: 'absolute',
-          bottom: '2rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: '0.5rem',
-          color: '#475569',
+          color: '#94a3b8',
           cursor: 'pointer',
+          background: 'transparent',
+          border: 'none',
+          fontFamily: 'Inter, sans-serif',
         }}
         onClick={() => scrollTo('about')}
       >
@@ -408,7 +397,8 @@ const Hero = () => {
         >
           <ArrowDown size={18} />
         </motion.div>
-      </motion.div>
+      </motion.button>
+      </div>
     </section>
   );
 };

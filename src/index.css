@@ -29,6 +29,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+  color-scheme: dark;
 }
 
 body {
@@ -38,6 +40,21 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(167, 139, 250, 0.95);
+  outline-offset: 3px;
+}
+
+.input-field:focus-visible {
+  outline: none;
 }
 
 /* Custom Scrollbar */
@@ -58,11 +75,9 @@ body {
 @keyframes gradient-flow {
   0%, 100% {
     background-position: 0% 50%;
-    filter: hue-rotate(0deg);
   }
   50% {
     background-position: 100% 50%;
-    filter: hue-rotate(30deg);
   }
 }
 
@@ -415,7 +430,38 @@ body {
 /* Section base */
 section {
   position: relative;
-  overflow: hidden;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-form .input-group {
+  margin-bottom: 0;
+}
+
+textarea.input-field ~ .input-label {
+  top: 1.05rem;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .mesh-gradient,
+  .gradient-orb {
+    animation: none;
+  }
 }
 
 /* Glow Effects */

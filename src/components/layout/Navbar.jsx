@@ -23,6 +23,28 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const onKey = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    const onResize = () => {
+      if (window.innerWidth > 768) setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const observers = navLinks.map(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return null;
@@ -239,6 +261,28 @@ const Navbar = () => {
                 {label}
               </motion.button>
             ))}
+            <motion.button
+              type="button"
+              onClick={() => scrollTo('contact')}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: navLinks.length * 0.05 }}
+              style={{
+                marginTop: '0.25rem',
+                background: 'linear-gradient(135deg, #8b5cf6, #3b82f6)',
+                border: 'none',
+                textAlign: 'center',
+                padding: '0.875rem 1rem',
+                cursor: 'pointer',
+                color: '#fff',
+                fontSize: '1rem',
+                fontWeight: 600,
+                fontFamily: 'Inter, sans-serif',
+                borderRadius: '10px',
+              }}
+            >
+              Let&apos;s Talk
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

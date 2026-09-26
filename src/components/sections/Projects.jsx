@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionTitle from '../ui/SectionTitle';
 import ProjectModal from '../ui/ProjectModal';
-import { ExternalLink, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
 const projects = [
@@ -44,6 +44,7 @@ const projects = [
 const Projects = () => {
   const [selected, setSelected] = useState(null);
   const [hovered, setHovered] = useState(null);
+  const closeProject = useCallback(() => setSelected(null), []);
 
   const containerVariants = {
     hidden: {},
@@ -103,9 +104,9 @@ const Projects = () => {
               onHoverEnd={() => setHovered(null)}
             >
               <motion.div
-                layoutId={`card-${project.title}`}
-                whileHover={{ y: -12, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+                onClick={() => setSelected(project)}
+                whileHover={{ y: -8 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 24 }}
                 style={{
                   background: hovered === project.title ? project.gradient : 'rgba(255,255,255,0.03)',
                   border: `1px solid ${hovered === project.title ? project.color + '50' : 'rgba(255,255,255,0.08)'}`,
@@ -260,6 +261,8 @@ const Projects = () => {
                   <div style={{ display: 'flex', gap: '0.75rem' }}>
                     <motion.a
                       href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -290,9 +293,12 @@ const Projects = () => {
                       <FaGithub size={14} />
                       Code
                     </motion.a>
-                    <motion.a
-                      href="#"
-                      onClick={(e) => e.stopPropagation()}
+                    <motion.button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelected(project);
+                      }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       style={{
@@ -304,15 +310,16 @@ const Projects = () => {
                         border: 'none',
                         borderRadius: '10px',
                         color: '#fff',
-                        textDecoration: 'none',
                         fontSize: '0.8125rem',
                         fontWeight: 600,
+                        cursor: 'pointer',
+                        fontFamily: 'Inter, sans-serif',
                         transition: 'all 0.2s ease',
                       }}
                     >
-                      <ExternalLink size={14} />
-                      Live Demo
-                    </motion.a>
+                      Details
+                      <ArrowUpRight size={14} />
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
@@ -367,7 +374,7 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      <AnimatePresence>{selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}</AnimatePresence>
+      <ProjectModal project={selected} onClose={closeProject} />
     </section>
   );
 };

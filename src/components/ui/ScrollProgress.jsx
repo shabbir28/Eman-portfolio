@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-
 const ScrollProgress = () => {
   const [progress, setProgress] = useState(0);
 
@@ -26,16 +24,19 @@ const ScrollProgress = () => {
         zIndex: 9998,
       }}
     >
-      <motion.div
+      <div
         style={{
           height: '100%',
-          width: `${progress}%`,
+          width: '100%',
+          transform: `scaleX(${progress / 100})`,
+          transformOrigin: 'left center',
           background:
             'linear-gradient(90deg, #8b5cf6, #3b82f6, #06b6d4)',
           boxShadow: '0 0 15px rgba(139,92,246,0.6), 0 0 30px rgba(59,130,246,0.3)',
           borderRadius: '0 2px 2px 0',
+          transition: 'transform 80ms linear',
+          willChange: 'transform',
         }}
-        transition={{ duration: 0.08, ease: 'linear' }}
       />
     </div>
   );

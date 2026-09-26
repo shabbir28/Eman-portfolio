@@ -14,7 +14,7 @@ const Footer = () => {
     { icon: FaGithub, href: 'https://github.com/eman-110', label: 'GitHub', color: '#f1f5f9' },
     { icon: FaLinkedin, href: 'https://www.linkedin.com/in/eman-abdul-malik-90b042333/', label: 'LinkedIn', color: '#0077b5' },
     { icon: FaFacebook, href: 'https://www.facebook.com/share/17ErLnE3ya/?mibextid=wwXIfr', label: 'Facebook', color: '#1877f2' },
-    { icon: Mail, href: 'mailto:eman@example.com', label: 'Email', color: '#8b5cf6' },
+    { icon: Mail, href: 'mailto:emanabdulmalik18@gmail.com', label: 'Email', color: '#8b5cf6' },
   ];
 
   const footerLinks = [
@@ -173,6 +173,7 @@ const Footer = () => {
                   alignItems: 'center',
                   gap: '0.5rem',
                   transition: 'color 0.2s ease',
+                  overflowWrap: 'anywhere',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = '#8b5cf6';
@@ -182,7 +183,7 @@ const Footer = () => {
                 }}
               >
                 <Mail size={14} />
-                eman@example.com
+                emanabdulmalik18@gmail.com
               </a>
               <span
                 style={{
@@ -222,8 +223,8 @@ const Footer = () => {
                 <motion.a
                   key={label}
                   href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={href.startsWith('http') ? '_blank' : undefined}
+                  rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   aria-label={label}
                   whileHover={{ scale: 1.15, y: -3 }}
                   whileTap={{ scale: 0.9 }}

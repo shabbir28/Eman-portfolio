@@ -117,8 +117,17 @@ const Services = () => {
               onHoverEnd={() => setHovered(null)}
             >
               <motion.div
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                role="button"
+                tabIndex={0}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                whileHover={{ y: -8 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 24 }}
                 style={{
                   background: hovered === svc.title ? svc.gradient : 'rgba(255,255,255,0.03)',
                   border: `1px solid ${hovered === svc.title ? svc.color + '50' : 'rgba(255,255,255,0.08)'}`,
@@ -131,7 +140,7 @@ const Services = () => {
                   boxShadow: hovered === svc.title
                     ? `0 25px 70px ${svc.color}20`
                     : 'none',
-                  cursor: 'default',
+                  cursor: 'pointer',
                 }}
               >
                 {/* Top gradient line */}
@@ -213,7 +222,7 @@ const Services = () => {
                     gap: '0.4rem',
                   }}
                 >
-                  Learn more
+                  Get in touch
                   <ArrowRight size={14} />
                 </motion.div>
               </motion.div>

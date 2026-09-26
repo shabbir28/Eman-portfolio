@@ -25,6 +25,7 @@ const Contact = () => {
   });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
   const [focused, setFocused] = useState(null);
 
   const handleChange = (e) =>
@@ -33,6 +34,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSending(true);
+    setError('');
     try {
       const res = await fetch('https://formsubmit.co/ajax/emanabdulmalik18@gmail.com', {
         method: 'POST',
@@ -58,7 +60,7 @@ const Contact = () => {
       }
     } catch {
       setSending(false);
-      alert('Something went wrong. Please try again.');
+      setError('Message could not be sent. Email me directly and I will get back to you.');
     }
   };
 
@@ -226,8 +228,14 @@ const Contact = () => {
                       >
                         {label}
                       </div>
-                      <div style={{ color: '#e2e8f0', fontSize: '0.9rem', fontWeight: 500 }}>
-                        {value}
+                      <div style={{ color: '#e2e8f0', fontSize: '0.9rem', fontWeight: 500, overflowWrap: 'anywhere' }}>
+                        {label === 'Email' ? (
+                          <a href={`mailto:${value}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                            {value}
+                          </a>
+                        ) : (
+                          value
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -303,6 +311,7 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
           >
             <motion.form
+              className="contact-form"
               onSubmit={handleSubmit}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -335,13 +344,7 @@ const Contact = () => {
               />
 
               {/* Row: Name + Email */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '1rem',
-                }}
-              >
+              <div className="form-row">
                 <div className="input-group">
                   <input
                     id="name"
@@ -432,6 +435,12 @@ const Contact = () => {
               </div>
 
               {/* Submit Button */}
+              {error && (
+                <p role="alert" style={{ color: '#fca5a5', fontSize: '0.875rem', lineHeight: 1.5, margin: 0 }}>
+                  {error}
+                </p>
+              )}
+
               <motion.button
                 type="submit"
                 disabled={sending || sent}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Loader = () => {
   const [progress, setProgress] = useState(0);
@@ -18,11 +18,10 @@ const Loader = () => {
   }, []);
 
   return (
-    <AnimatePresence>
       <motion.div
         initial={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.45, ease: 'easeInOut' }}
         style={{
           position: 'fixed',
           inset: 0,
@@ -172,7 +171,6 @@ const Loader = () => {
           </div>
         </motion.div>
       </motion.div>
-    </AnimatePresence>
   );
 };
 

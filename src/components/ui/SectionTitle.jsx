@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const SectionTitle = ({ label, title, subtitle, center = true }) => {
   return (
-    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: '4rem' }}>
+    <div style={{ textAlign: center ? 'center' : 'left', marginBottom: '3.25rem' }}>
       {label && (
         <motion.span
           initial={{ opacity: 0, y: 15, scale: 0.9 }}
@@ -70,7 +70,7 @@ const SectionTitle = ({ label, title, subtitle, center = true }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           style={{
-            color: '#64748b',
+            color: '#94a3b8',
             fontSize: 'clamp(0.9rem, 2vw, 1.05rem)',
             maxWidth: '650px',
             margin: center ? '0 auto' : '0',

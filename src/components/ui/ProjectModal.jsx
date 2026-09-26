@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink } from 'lucide-react';
+import { X } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 
 const ProjectModal = ({ project, onClose }) => {
-  if (!project) return null;
+  useEffect(() => {
+    if (!project) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (event) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [project, onClose]);
 
   return (
     <AnimatePresence>
+      {project && (
       <motion.div
+        key="project-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="project-modal-title"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -38,6 +55,8 @@ const ProjectModal = ({ project, onClose }) => {
             padding: '2.5rem',
             maxWidth: '650px',
             width: '100%',
+            maxHeight: 'min(90vh, 760px)',
+            overflowY: 'auto',
             position: 'relative',
             boxShadow:
               '0 0 80px rgba(139,92,246,0.25), 0 0 120px rgba(59,130,246,0.1)',
@@ -95,6 +114,7 @@ const ProjectModal = ({ project, onClose }) => {
             </motion.div>
 
             <motion.h2
+              id="project-modal-title"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
@@ -263,7 +283,7 @@ const ProjectModal = ({ project, onClose }) => {
             style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
           >
             <motion.a
-              href={project.github || '#'}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03 }}
@@ -294,38 +314,10 @@ const ProjectModal = ({ project, onClose }) => {
               <FaGithub size={16} />
               View Code
             </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.625rem',
-                padding: '0.75rem 1.5rem',
-                background: `linear-gradient(135deg, ${project.color}, ${project.color}dd)`,
-                border: 'none',
-                borderRadius: '12px',
-                color: '#fff',
-                textDecoration: 'none',
-                fontSize: '0.875rem',
-                fontWeight: 600,
-                boxShadow: `0 4px 15px ${project.color}40`,
-                transition: 'box-shadow 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = `0 6px 25px ${project.color}60`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = `0 4px 15px ${project.color}40`;
-              }}
-            >
-              <ExternalLink size={16} />
-              Live Preview
-            </motion.a>
           </motion.div>
         </motion.div>
       </motion.div>
+      )}
     </AnimatePresence>
   );
 };

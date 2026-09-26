@@ -1,12 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SectionTitle from '../ui/SectionTitle';
 import GlassCard from '../ui/GlassCard';
 import { Code2, Palette, Lightbulb, GraduationCap } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const cards = [
   {
@@ -36,34 +32,9 @@ const cards = [
 ];
 
 const About = () => {
-  const sectionRef = useRef(null);
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        imageRef.current,
-        { y: 60, opacity: 0, scale: 0.95 },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-          },
-        }
-      );
-    }, sectionRef);
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       id="about"
-      ref={sectionRef}
       style={{
         padding: 'clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 3rem)',
         position: 'relative',
@@ -86,7 +57,7 @@ const About = () => {
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <SectionTitle
           label="About Me"
-          title="About Me"
+          title="Who I Am"
           subtitle="From concept to code — building mobile & desktop apps that perform."
         />
 
@@ -176,7 +147,6 @@ const About = () => {
 
           {/* Visual Profile Card */}
           <motion.div
-            ref={imageRef}
             initial={{ opacity: 0, scale: 0.9, y: 40 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
@@ -228,8 +198,20 @@ const About = () => {
                     '0 0 60px rgba(139,92,246,0.3), inset 0 0 30px rgba(139,92,246,0.1)',
                 }}
               >
-                <span role="img" aria-label="Developer">
-                  👩‍💻
+                <span
+                  aria-hidden="true"
+                  style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontWeight: 700,
+                    fontSize: '3.25rem',
+                    lineHeight: 1,
+                    background: 'linear-gradient(135deg, #ffffff, #c4b5fd)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  E
                 </span>
               </div>
 
