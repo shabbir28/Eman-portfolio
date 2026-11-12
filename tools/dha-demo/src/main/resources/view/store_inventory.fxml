@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1400.0" styleClass="dashboard-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StoreInventoryController">
+    <children>
+        <!-- Header -->
+        <Label text="Store Inventory" styleClass="dashboard-title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a1464;" />
+
+        <!-- Toggle Buttons (Top Right) -->
+        <HBox spacing="10" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+             <ToggleButton fx:id="btnStore" text="Store" onAction="#handleTabSwitch" styleClass="tab-toggle-button" selected="true"/>
+             <ToggleButton fx:id="btnReceived" text="Received" onAction="#handleTabSwitch" styleClass="tab-toggle-button"/>
+             <ToggleButton fx:id="btnTemporary" text="Temporary" onAction="#handleTabSwitch" styleClass="tab-toggle-button"/>
+             <ToggleButton fx:id="btnPermanent" text="Permanent" onAction="#handleTabSwitch" styleClass="tab-toggle-button"/>
+        </HBox>
+
+        <!-- Main Content Area -->
+        <StackPane AnchorPane.topAnchor="90.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            
+            <!-- Store View -->
+            <VBox fx:id="viewStore" spacing="15" styleClass="card-pane" visible="true">
+                <children>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Total Store Inventory" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="searchStore" promptText="Search product, supplier, order" prefWidth="300" styleClass="search-field"/>
+                    </HBox>
+                    <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="NEVER" fitToHeight="true" fitToWidth="false" VBox.vgrow="ALWAYS" styleClass="table-container">
+                        <content>
+                            <TableView fx:id="tableStore" style="-fx-font-size: 12px; -fx-padding: 5;" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colStoreItem" text="Item Name" minWidth="200" prefWidth="250"/>
+                                        <TableColumn fx:id="colStoreTotal" text="Total Items" minWidth="110" prefWidth="130" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colStoreInStore" text="In Store" minWidth="110" prefWidth="130" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colStoreAssigned" text="Assigned" minWidth="110" prefWidth="130" style="-fx-alignment: CENTER;" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                        </content>
+                    </ScrollPane>
+                </children>
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+            </VBox>
+
+            <!-- Received View -->
+            <VBox fx:id="viewReceived" spacing="15" styleClass="card-pane" visible="false">
+                <children>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Received Inventory" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="searchReceived" promptText="Search product, supplier, order" prefWidth="300" styleClass="search-field"/>
+                    </HBox>
+                    <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="NEVER" fitToHeight="true" fitToWidth="false" VBox.vgrow="ALWAYS" styleClass="table-container">
+                        <content>
+                            <TableView fx:id="tableReceived" style="-fx-font-size: 12px; -fx-padding: 5;" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colRecItem" text="Item Name" minWidth="180" prefWidth="220"/>
+                                        <TableColumn fx:id="colRecQty" text="Quantity" minWidth="90" prefWidth="110" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colRecFrom" text="Received From" minWidth="150" prefWidth="180"/>
+                                        <TableColumn fx:id="colRecDetail" text="Detail/Reference" minWidth="140" prefWidth="170"/>
+                                        <TableColumn fx:id="colRecDate" text="Date" minWidth="110" prefWidth="140"/>
+                                        <TableColumn fx:id="colRecPrice" text="Unit Price" minWidth="110" prefWidth="140" style="-fx-alignment: CENTER_RIGHT;" />
+                                        <TableColumn fx:id="colRecRemarks" text="Remarks" minWidth="150" prefWidth="200" style="-fx-alignment: CENTER_LEFT;"/>
+                                        <TableColumn fx:id="colRecAction" text="Actions" minWidth="140" prefWidth="160" style="-fx-alignment: CENTER;" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                        </content>
+                    </ScrollPane>
+                </children>
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+            </VBox>
+
+            <!-- Temporary View -->
+            <VBox fx:id="viewTemporary" spacing="15" styleClass="card-pane" visible="false">
+                <children>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Temporary Issued and Return Inventory" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="searchTemporary" promptText="Search product, supplier, order" prefWidth="300" styleClass="search-field"/>
+                    </HBox>
+                    <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="NEVER" fitToHeight="true" fitToWidth="false" VBox.vgrow="ALWAYS" styleClass="table-container">
+                        <content>
+                            <TableView fx:id="tableTemporary" style="-fx-font-size: 12px; -fx-padding: 5;" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colTempItem" text="Item Name" minWidth="180" prefWidth="220"/>
+                                        <TableColumn fx:id="colTempIssuedQty" text="Issued Quantity" minWidth="120" prefWidth="150" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colTempReturnQty" text="Return Quantity" minWidth="120" prefWidth="150" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colTempRemainingQty" text="Remaining Quantity" minWidth="140" prefWidth="170" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colTempName" text="Employee Name" minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colTempDesig" text="Designation" minWidth="130" prefWidth="160"/>
+                                        <TableColumn fx:id="colTempBranch" text="Branch Name" minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colTempRegNo" text="Register No." minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colTempIssuedDate" text="Issued Date" minWidth="110" prefWidth="140"/>
+                                        <TableColumn fx:id="colTempReturnDate" text="Return Date" minWidth="110" prefWidth="140"/>
+                                        <TableColumn fx:id="colTempRemarks" text="Remarks" minWidth="150" prefWidth="200" style="-fx-alignment: CENTER_LEFT;"/>
+                                        <TableColumn fx:id="colTempAction" text="Actions" minWidth="140" prefWidth="160" style="-fx-alignment: CENTER;"/>
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                        </content>
+                    </ScrollPane>
+                </children>
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+            </VBox>
+
+            <!-- Permanent View -->
+            <VBox fx:id="viewPermanent" spacing="15" styleClass="card-pane" visible="false">
+                <children>
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Permanent Issued Inventory" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <TextField fx:id="searchPermanent" promptText="Search product, supplier, order" prefWidth="300" styleClass="search-field"/>
+                    </HBox>
+                    <ScrollPane hbarPolicy="ALWAYS" vbarPolicy="NEVER" fitToHeight="true" fitToWidth="false" VBox.vgrow="ALWAYS" styleClass="table-container">
+                        <content>
+                            <TableView fx:id="tablePermanent" style="-fx-font-size: 12px; -fx-padding: 5;" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colPermItem" text="Item Name" minWidth="180" prefWidth="220"/>
+                                        <TableColumn fx:id="colPermQty" text="Quantity" minWidth="90" prefWidth="110" style="-fx-alignment: CENTER;" />
+                                        <TableColumn fx:id="colPermName" text="Employee Name" minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colPermDesig" text="Designation" minWidth="130" prefWidth="160"/>
+                                        <TableColumn fx:id="colPermBranch" text="Branch Name" minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colPermRegNo" text="Register No." minWidth="120" prefWidth="150"/>
+                                        <TableColumn fx:id="colPermDate" text="Issued Date" minWidth="110" prefWidth="140"/>
+                                        <TableColumn fx:id="colPermRemarks" text="Remarks" minWidth="150" prefWidth="200" style="-fx-alignment: CENTER_LEFT;"/>
+                                        <TableColumn fx:id="colPermAction" text="Actions" minWidth="140" prefWidth="160" style="-fx-alignment: CENTER;" />
+                                    </columns>
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                </TableView>
+                        </content>
+                    </ScrollPane>
+                </children>
+                <padding>
+                    <Insets top="15" right="20" bottom="15" left="20"/>
+                </padding>
+            </VBox>
+
+        </StackPane>
+    </children>
+</AnchorPane>

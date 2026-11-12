@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!-- A4 paper size: 595 x 842 pixels (at 72 DPI) -->
+<AnchorPane prefHeight="842.0" prefWidth="595.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StoreReceivedPrintController">
+   <children>
+      <!-- Main printable area with A4-appropriate margins -->
+      <VBox fx:id="printableArea" spacing="5.0" style="-fx-padding: 36 36 36 36; -fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <!-- Header -->
+             <GridPane>
+               <columnConstraints>
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" percentWidth="60.0" prefWidth="100.0" />
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="20.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+                <children>
+                   <!-- Placeholder for Logo if available, or just text DHA LAHORE -->
+                   <VBox alignment="CENTER_LEFT">
+                       <Label text="DHA">
+                           <font><Font name="System Bold" size="24.0"/></font>
+                       </Label>
+                       <Label text="LAHORE">
+                           <font><Font name="System Bold" size="12.0"/></font>
+                       </Label>
+                   </VBox>
+                   
+                   <Label text="Information Technology Branch" underline="true" GridPane.columnIndex="1">
+                      <font>
+                         <Font name="System Bold" size="16.0" />
+                      </font>
+                   </Label>
+                </children>
+             </GridPane>
+
+            <Label text="Store Received/issue Form:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+
+            <!-- Main Form Content Frame -->
+             <GridPane style="-fx-border-color: black; -fx-border-width: 1;">
+               <columnConstraints>
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                 <RowConstraints vgrow="NEVER" /> <!-- Date -->
+                 <RowConstraints vgrow="NEVER" /> <!-- Description -->
+                 <RowConstraints vgrow="NEVER" /> <!-- In use of -->
+                 <RowConstraints vgrow="NEVER" /> <!-- Branch -->
+                 <RowConstraints vgrow="SOMETIMES" minHeight="100.0" /> <!-- Reason -->
+                 <RowConstraints vgrow="NEVER" /> <!-- Request by -->
+                 <RowConstraints vgrow="NEVER" /> <!-- Approved by -->
+                   <RowConstraints vgrow="NEVER" /> <!-- Store In charge -->
+               </rowConstraints>
+                <children>
+                    <!-- Row 0: Date -->
+                   <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;">
+                      <children>
+                         <Label text="Date:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <TextField fx:id="dateField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                      </children>
+                   </HBox>
+
+                    <!-- Row 1: Item Description -->
+                   <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="1">
+                      <children>
+                         <Label text="Item Description:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <TextField fx:id="descriptionField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                      </children>
+                   </HBox>
+
+                    <!-- Row 2: In the use Of -->
+                   <VBox spacing="5.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="2">
+                      <children>
+                         <Label text="In the use Of">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <HBox alignment="CENTER_LEFT" spacing="5.0">
+                             <children>
+                                 <Label text="Officer / Emp Name:">
+                                     <font><Font name="System Bold" size="12.0"/></font>
+                                 </Label>
+                                 <TextField fx:id="officerNameField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                             </children>
+                         </HBox>
+                          <HBox alignment="CENTER_LEFT" spacing="5.0">
+                              <children>
+                                  <Label text="Against: ION No/Minute Sheet :">
+                                      <font><Font name="System Bold" size="12.0"/></font>
+                                  </Label>
+                                  <TextField fx:id="againstField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                              </children>
+                          </HBox>
+                      </children>
+                   </VBox>
+
+                    <!-- Row 3: Branch Name -->
+                   <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="3">
+                      <children>
+                         <Label text="Branch Name:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <TextField fx:id="branchField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                      </children>
+                   </HBox>
+
+                    <!-- Row 4: Reason -->
+                   <VBox spacing="5.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="4">
+                      <children>
+                         <Label text="Reason:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <TextField fx:id="reasonField" alignment="TOP_LEFT" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS" />
+                      </children>
+                   </VBox>
+
+                    <!-- Row 5: Requested by -->
+                   <VBox spacing="10.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="5">
+                      <children>
+                         <Label text="Requested by:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         
+                         <GridPane hgap="20.0" vgap="10.0">
+                           <columnConstraints>
+                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                            <children>
+                               <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                   <!-- Technician 1 -->
+                                  <children>
+                                     <Label text="Technician Name:" />
+                                     <TextField fx:id="techName1Field" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                                  </children>
+                               </HBox>
+                               <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1">
+                                  <children>
+                                     <Label text="Signature:" />
+                                     <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                                  </children>
+                               </HBox>
+
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.rowIndex="1">
+                                    <!-- Technician 2 -->
+                                    <children>
+                                        <Label text="Technician Name :" />
+                                        <TextField fx:id="techName2Field" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <children>
+                                        <Label text="Signature:" />
+                                        <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                            </children>
+                         </GridPane>
+                      </children>
+                   </VBox>
+
+                    <!-- Row 6: Approved by -->
+                   <VBox spacing="20.0" style="-fx-border-color: transparent transparent black transparent; -fx-padding: 5;" GridPane.rowIndex="6">
+                      <children>
+                         <Label text="Approved by:">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <HBox spacing="50.0">
+                             <children>
+                                 <HBox alignment="BOTTOM_LEFT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                     <children>
+                                         <Label text="Asst Dir IT :" />
+                                         <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                                     </children>
+                                 </HBox>
+                                 <HBox alignment="BOTTOM_LEFT" spacing="5.0" HBox.hgrow="ALWAYS">
+                                     <children>
+                                         <Label text="DIR IT:" />
+                                         <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                                     </children>
+                                 </HBox>
+                             </children>
+                             <padding>
+                                 <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                             </padding>
+                         </HBox>
+                      </children>
+                   </VBox>
+
+                    <!-- Row 7: Store In charge -->
+                   <VBox spacing="10.0" style="-fx-padding: 5;" GridPane.rowIndex="7">
+                      <children>
+                         <Label text="Store In charge :">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <GridPane hgap="10.0">
+                           <columnConstraints>
+                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" />
+                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="35.0" />
+                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                            <children>
+                               <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                  <children>
+                                     <Label text="Name:" />
+                                     <TextField fx:id="storeInChargeNameField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                                  </children>
+                               </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="2.0" GridPane.columnIndex="1">
+                                    <children>
+                                        <Label text="Emp No:" minWidth="-Infinity" />
+                                        <TextField fx:id="storeInChargeEmpNoField" style="-fx-background-color: transparent;" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="BOTTOM_LEFT" spacing="5.0" GridPane.columnIndex="2">
+                                    <children>
+                                        <Label text="Signature:" />
+                                        <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                                    </children>
+                                </HBox>
+                            </children>
+                         </GridPane>
+                      </children>
+                   </VBox>
+                </children>
+             </GridPane>
+            
+            <!-- Footer Stuff -->
+             <GridPane hgap="10.0" vgap="10.0">
+               <columnConstraints>
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+                <children>
+                   <HBox alignment="BOTTOM_LEFT" spacing="5.0">
+                      <children>
+                         <Label text="Stock Status">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                      </children>
+                   </HBox>
+                   
+                   <HBox alignment="BOTTOM_LEFT" spacing="5.0" GridPane.rowIndex="1">
+                      <children>
+                         <Label text="Auction Register Sr No">
+                             <font><Font name="System Bold" size="12.0"/></font>
+                         </Label>
+                         <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                      </children>
+                   </HBox>
+                    
+                    <HBox alignment="BOTTOM_LEFT" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <children>
+                            <Label text="Auction Date">
+                                <font><Font name="System Bold" size="12.0"/></font>
+                            </Label>
+                            <Separator valignment="BOTTOM" HBox.hgrow="ALWAYS" />
+                        </children>
+                    </HBox>
+
+                    <Label text="Note: without approval of IT Branch concern officer any type of item must not be issued by IT store ." wrapText="true" GridPane.columnSpan="2" GridPane.rowIndex="2">
+                        <font>
+                            <Font name="System Italic" size="11.0" />
+                        </font>
+                    </Label>
+                </children>
+                <VBox.margin>
+                   <Insets top="20.0" />
+                </VBox.margin>
+             </GridPane>
+
+         </children>
+      </VBox>
+
+       <!-- Print Button (hidden during print) -->
+       <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+           <children>
+               <Button fx:id="printButton" text="Print" onAction="#handlePrint" style="-fx-padding: 8 20 8 20; -fx-font-size: 12px;" />
+           </children>
+       </HBox>
+   </children>
+</AnchorPane>

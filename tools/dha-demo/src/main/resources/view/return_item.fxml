@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1050.0" styleClass="dashboard-root" stylesheets="/css/dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReturnItemController">
+
+    <children>
+        <!-- Page Heading -->
+        <Label text="Return Item" styleClass="dashboard-title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0" />
+
+        <!-- Make form scrollable on smaller screens -->
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: white; -fx-background-color: white;"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="80.0" AnchorPane.bottomAnchor="0.0">
+            <content>
+                <!-- Form Container -->
+                <VBox alignment="CENTER" spacing="20.0" prefWidth="1050.0" style="-fx-background-color: white;">
+                    <children>
+                        <!-- Form Panel with border -->
+                        <VBox styleClass="low-stock-card" spacing="25.0" alignment="CENTER" maxWidth="800.0" prefWidth="800.0">
+                            <padding>
+                                <Insets top="40.0" right="40.0" bottom="40.0" left="40.0" />
+                            </padding>
+                            <children>
+                                <!-- Form Title -->
+                                <Label text="Return Store Item" styleClass="card-title" />
+
+                                <!-- Form Fields -->
+                                <GridPane hgap="20.0" vgap="20.0" alignment="CENTER">
+                                    <columnConstraints>
+                                        <ColumnConstraints minWidth="150.0" prefWidth="150.0" />
+                                        <ColumnConstraints minWidth="300.0" prefWidth="300.0" />
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="Item Name" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <ComboBox fx:id="itemNameComboBox" promptText="Select item name" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300.0" />
+
+                                        <Label text="Employee" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <ComboBox fx:id="branchComboBox" promptText="Select employee" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300.0" />
+
+                                        <Label text="Issue Quantity" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <TextField fx:id="issueQuantityField" promptText="0" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300.0" />
+
+                                        <Label text="Return Quantity" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <TextField fx:id="returnQuantityField" promptText="Enter return Quantity" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300.0" />
+
+                                        <Label text="Return Date" GridPane.columnIndex="0" GridPane.rowIndex="4" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <DatePicker fx:id="returnDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300.0" />
+
+                                        <Label text="Remarks" GridPane.columnIndex="0" GridPane.rowIndex="5" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <TextField fx:id="remarksField" promptText="Enter remarks" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="300.0" />
+                                    </children>
+                                </GridPane>
+
+                                <!-- Action Buttons -->
+                                <HBox alignment="CENTER" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="saveButton" text="Save" onAction="#handleSave"
+                                                style="-fx-background-color: #14015c; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-padding: 10 30; -fx-font-size: 14px;" />
+                                        <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"
+                                                style="-fx-background-color: white; -fx-text-fill: #14015c; -fx-font-weight: 600; -fx-background-radius: 8; -fx-border-color: #14015c; -fx-border-radius: 8; -fx-border-width: 2; -fx-padding: 10 30; -fx-font-size: 14px;" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

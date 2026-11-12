@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520" prefWidth="900" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LowStockAddController">
+    <children>
+        <StackPane AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+            <VBox styleClass="card-pane" spacing="30" alignment="CENTER" maxWidth="700">
+                <children>
+                    <Label text="Add Low Stock Limit" styleClass="card-title" style="-fx-font-size: 28px;" />
+                    
+                    <GridPane hgap="20" vgap="25" alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="120" halignment="RIGHT" />
+                            <ColumnConstraints minWidth="300" />
+                        </columnConstraints>
+                        <children>
+                            <Label text="Item Name" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <ComboBox fx:id="itemComboBox" promptText="Select item name" prefWidth="300" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                            <Label text="Limit" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <TextField fx:id="limitField" promptText="Enter Low Stock Limit" style="-fx-font-size: 14px; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        </children>
+                    </GridPane>
+
+                    <HBox spacing="40" alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+                        <children>
+                            <Button text="Save" onAction="#handleSave" styleClass="primary-button" style="-fx-min-width: 150; -fx-min-height: 40; -fx-font-size: 16px;" />
+                            <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: white; -fx-text-fill: #333; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-min-width: 150; -fx-min-height: 40; -fx-font-size: 16px;" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </StackPane>
+    </children>
+</AnchorPane>

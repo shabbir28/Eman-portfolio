@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1050.0" styleClass="dashboard-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LowStockController">
+    <children>
+        <Label text="Low Stock" styleClass="dashboard-title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a1464;" />
+
+        <StackPane AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="80.0" AnchorPane.bottomAnchor="30.0">
+            <children>
+                <!-- Selection View (Landing) -->
+                <HBox fx:id="selectionPane" alignment="CENTER" spacing="50" visible="true">
+                    <children>
+                        <Button text="Add" onAction="#handleSelectionAdd"
+                                prefWidth="260.0" prefHeight="140.0"
+                                style="-fx-background-radius: 32; -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8); -fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: 700; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0, 0, 8);" />
+
+                        <Button text="View" onAction="#handleSelectionView"
+                                prefWidth="260.0" prefHeight="140.0"
+                                style="-fx-background-radius: 32; -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8); -fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: 700; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0, 0, 8);" />
+                    </children>
+                </HBox>
+
+                <!-- Content View (Dynamic Load) -->
+                <AnchorPane fx:id="contentPane" id="contentPane" visible="false" />
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

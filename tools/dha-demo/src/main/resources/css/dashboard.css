@@ -1,0 +1,186 @@
+/* Root styling */
+.dashboard-root {
+    -fx-background-color: white;
+    -fx-padding: 20;
+}
+
+/* Dashboard Header */
+.dashboard-title {
+    -fx-font-size: 36px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #14015c;
+}
+
+/* Filter Buttons */
+.filter-button {
+    -fx-background-color: rgba(20, 1, 92, 0.18);
+    -fx-text-fill: #14015c;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-background-radius: 50;
+    -fx-padding: 4 22;
+    -fx-border-color: transparent;
+    -fx-pref-width: 100;
+    -fx-min-width: 100;
+}
+
+.filter-button-active {
+    -fx-background-color: #14015c;
+    -fx-text-fill: white;
+}
+
+.filter-button:hover {
+    -fx-background-color: rgba(20, 1, 92, 0.30);
+}
+
+
+/* Low Stock Card */
+.low-stock-card {
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-border-color: #14015c;
+    -fx-border-radius: 30;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(14, 8, 103, 0.12), 18, 0, 0, 8);
+}
+
+.card-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #14015c;
+}
+
+.table-header {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #14015c;
+    -fx-border-color: transparent transparent #e1ddf7 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 8 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-spacing: 0;
+    -fx-justify-content: space-between;
+}
+
+.low-stock-table {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.low-stock-table .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.low-stock-table .table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 6 0 6 0;
+}
+
+.low-stock-table .table-row-cell:odd {
+    -fx-background-color: rgba(20, 1, 92, 0.03);
+}
+
+.low-stock-table .table-row-cell:selected {
+    -fx-background-color: rgba(20, 1, 92, 0.15);
+}
+
+.low-stock-table .table-column {
+    -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #1f163f;
+    -fx-font-size: 14px;
+}
+
+/* Metric Cards */
+.metric-card {
+    -fx-background-radius: 32;
+    -fx-padding: 24;
+    -fx-pref-height: 150;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0, 0, 8);
+    -fx-min-width: 200;
+    -fx-min-height: 120;
+}
+
+.metric-card .metric-value {
+    -fx-font-size: 48px;
+    -fx-font-weight: 700;
+    -fx-text-fill: white;
+}
+
+.metric-card .metric-label {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-wrap-text: true;
+}
+
+VBox.metric-card.gradient-1,
+VBox.gradient-1.metric-card,
+.metric-card.gradient-1,
+.gradient-1.metric-card {
+    -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8);
+}
+
+VBox.metric-card.gradient-2,
+VBox.gradient-2.metric-card,
+.metric-card.gradient-2,
+.gradient-2.metric-card {
+    -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8);
+}
+
+VBox.metric-card.gradient-3,
+VBox.gradient-3.metric-card,
+.metric-card.gradient-3,
+.gradient-3.metric-card {
+    -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8);
+}
+
+VBox.metric-card.gradient-4,
+VBox.gradient-4.metric-card,
+.metric-card.gradient-4,
+.gradient-4.metric-card {
+    -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8);
+
+}
+
+/* Scrollbar Styles */
+.table-view .scroll-bar:horizontal,
+.table-view .scroll-bar:vertical {
+    -fx-background-color: #696969;
+    -fx-min-height: 12px;
+    -fx-min-width: 12px;
+}
+
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: #696969;
+    -fx-border-color: #c0c0c0;
+    -fx-background-radius: 2em;
+}
+
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #1a1464;
+    -fx-background-radius: 5em;
+    -fx-min-height: 10px;
+    -fx-min-width: 10px;
+}
+
+.table-view .scroll-bar:horizontal .increment-button,
+.table-view .scroll-bar:horizontal .decrement-button,
+.table-view .scroll-bar:vertical .increment-button,
+.table-view .scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0em;
+    -fx-padding: 0 0 0 0;
+    -fx-pref-height: 0;
+    -fx-pref-width: 0;
+}
+
+.table-view .scroll-bar:horizontal .increment-arrow,
+.table-view .scroll-bar:horizontal .decrement-arrow,
+.table-view .scroll-bar:vertical .increment-arrow,
+.table-view .scroll-bar:vertical .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}

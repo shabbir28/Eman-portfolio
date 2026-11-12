@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1050.0" styleClass="dashboard-root" stylesheets="/css/dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AssignUserItemController">
+
+    <children>
+        <!-- Page Heading -->
+        <Label text="Assign Item" styleClass="dashboard-title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0" />
+
+        <!-- Scrollable form container -->
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" vbarPolicy="AS_NEEDED"
+                    style="-fx-background: white; -fx-background-color: white;"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                    AnchorPane.topAnchor="80.0" AnchorPane.bottomAnchor="0.0">
+            <content>
+                <!-- Form Container -->
+                <VBox alignment="CENTER" spacing="20.0" prefWidth="1050.0" style="-fx-background-color: white;">
+                    <children>
+                        <!-- Form Panel with border -->
+                        <VBox styleClass="low-stock-card" spacing="20.0" alignment="CENTER" maxWidth="900.0" prefWidth="900.0">
+                            <padding>
+                                <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+                            </padding>
+                            <children>
+                                <!-- Form Title -->
+                                <Label text="Assign User Item" styleClass="card-title" />
+
+                                <!-- PO Selection -->
+                                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                    <children>
+                                        <Label text="PO No:" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <ComboBox fx:id="poComboBox" promptText="Select PO Number" prefWidth="300.0" />
+                                    </children>
+                                </HBox>
+
+                                <!-- Items Table -->
+                                <TableView fx:id="itemsTable" prefHeight="300.0" prefWidth="840.0">
+                                    <columns>
+                                        <TableColumn fx:id="selectCol" text="Select" prefWidth="60.0" />
+                                        <TableColumn fx:id="itemCol" text="Item Name" prefWidth="250.0" />
+                                        <TableColumn fx:id="qtyCol" text="Qty" prefWidth="80.0" />
+                                        <TableColumn fx:id="empCol" text="Employee" prefWidth="250.0" />
+                                        <TableColumn fx:id="dhaCol" text="DHA ID" prefWidth="100.0" />
+                                        <TableColumn fx:id="poCol" text="PO No" prefWidth="100.0" />
+                                    </columns>
+                                </TableView>
+
+                                <!-- Issue Details -->
+                                <GridPane hgap="20.0" vgap="20.0" alignment="CENTER_LEFT">
+                                    <columnConstraints>
+                                        <ColumnConstraints minWidth="100.0" prefWidth="100.0" />
+                                        <ColumnConstraints minWidth="300.0" prefWidth="300.0" />
+                                    </columnConstraints>
+                                    <children>
+                                        <Label text="Issue Date" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <DatePicker fx:id="issueDatePicker" promptText="Enter issue date" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300.0" />
+
+                                        <Label text="Remarks" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-text-fill: #14015c; -fx-font-weight: 600;" />
+                                        <TextField fx:id="remarksField" promptText="Enter remarks" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300.0" />
+                                    </children>
+                                </GridPane>
+
+                                <!-- Action Buttons -->
+                                <HBox alignment="CENTER" spacing="15.0">
+                                    <children>
+                                        <Button fx:id="saveButton" text="Save" onAction="#handleSave"
+                                                style="-fx-background-color: #14015c; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-padding: 10 30; -fx-font-size: 14px;" />
+                                        <Button fx:id="cancelButton" text="Cancel" onAction="#handleCancel"
+                                                style="-fx-background-color: white; -fx-text-fill: #14015c; -fx-font-weight: 600; -fx-background-radius: 8; -fx-border-color: #14015c; -fx-border-radius: 8; -fx-border-width: 2; -fx-padding: 10 30; -fx-font-size: 14px;" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>

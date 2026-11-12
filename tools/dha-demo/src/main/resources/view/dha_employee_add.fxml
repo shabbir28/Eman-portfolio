@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            stylesheets="/css/global.css,/css/dha_employee.css"
+            xmlns="http://javafx.com/javafx/21.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="gui.DHAEmployeeAddController">
+
+    <children>
+        <StackPane AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0" AnchorPane.bottomAnchor="30.0">
+            <VBox styleClass="card-pane" spacing="20" alignment="CENTER" maxWidth="700">
+                <children>
+                    <Label text="Add Employee" styleClass="card-title" style="-fx-font-size: 28px;" />
+                    
+                    <GridPane hgap="20" vgap="15" alignment="CENTER">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="120" halignment="RIGHT" />
+                            <ColumnConstraints minWidth="300" hgrow="ALWAYS" />
+                        </columnConstraints>
+                        <children>
+                            <Label text="DHA ID" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                            <TextField fx:id="dhaIdField" promptText="Enter Employee DHA ID" style="-fx-font-size: 14px; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                            <Label text="Name" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                            <TextField fx:id="nameField" promptText="Enter Employee Name" style="-fx-font-size: 14px; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                            <Label text="Branch" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                            <ComboBox fx:id="branchComboBox" promptText="Select Branch" prefWidth="300" maxWidth="Infinity" style="-fx-font-size: 14px;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                            <Label text="Designation" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                            <TextField fx:id="designationField" promptText="Enter Designation" style="-fx-font-size: 14px; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                            <Label text="Scale" styleClass="label" style="-fx-text-fill: #5a4f83; -fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                            <TextField fx:id="scaleField" promptText="Enter Scale" style="-fx-font-size: 14px; -fx-padding: 8;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        </children>
+                    </GridPane>
+
+                    <HBox spacing="40" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+                        <children>
+                            <Button text="Save" onAction="#handleSave" styleClass="primary-button" style="-fx-min-width: 150; -fx-min-height: 40; -fx-font-size: 16px;" />
+                            <Button text="Cancel" onAction="#handleCancel" style="-fx-background-color: white; -fx-text-fill: #333; -fx-border-color: #ccc; -fx-border-radius: 5; -fx-min-width: 150; -fx-min-height: 40; -fx-font-size: 16px;" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </StackPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,126 @@
+package repository;
+
+import builder.GenericBuilder;
+import database.ConnectionFactory;
+import model.Role;
+import model.User;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserRepository implements IRepository<User, Long> {
+
+    private final Connection connection;
+
+    public UserRepository() {
+        ConnectionFactory connectionFactory = ConnectionFactory.getInstance();
+        connection = connectionFactory.getConnection();
+    }
+
+    @Override
+    public List<User> findAll() {
+        String query = "SELECT * FROM Users";
+        List<User> users = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                users.add(createUser(resultSet));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return users;
+    }
+
+    @Override
+    public User findById(Long id) {
+        String query = "SELECT * FROM Users WHERE id = ?";
+        try(PreparedStatement preparedStatement= connection.prepareStatement(query)){
+            preparedStatement.setLong(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return createUser(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    private User createUser(ResultSet resultSet) throws SQLException {
+        return GenericBuilder.of(User::new)
+                .with(User::setId, resultSet.getLong("id"))
+                .with(User::setUsername, resultSet.getString("username"))
+                .with(User::setPassword, resultSet.getString("password"))
+                .with(User::setRole, Role.valueOf(resultSet.getString("role")))
+                .build();
+    }
+
+    @Override
+    public void add(User user) {
+        String query = "INSERT INTO Users (username, password, role) VALUES (?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole().name());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void update(User user) {
+        String query = "UPDATE Users SET username = ?, password = ?, role = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole().name());
+            preparedStatement.setLong(4, user.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        String query = "DELETE FROM Users WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public User findByName(String name) {
+        String query = "SELECT * FROM Users WHERE username = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)){
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return createUser(resultSet);
+            }
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    @Override
+    public int getTotalCount() {
+        String query = "SELECT COUNT(*) AS total FROM Users";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            if (resultSet.next()) {
+                return resultSet.getInt("total");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+}

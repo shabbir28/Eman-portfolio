@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151516">
+  <meta name="description" content="SecureScan is a native Android QR scanner with live camera scanning, gallery image import, and HTTP/HTTPS link classification.">
+  <title>SecureScan | Eman Abdul Malik</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../projects.css">
+  <script src="../script.js" defer></script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 32 32"><rect x="8" y="2" width="16" height="28" rx="3"/><path d="M13 6h6m-4 20h2"/></symbol>
+    <symbol id="i-desktop" viewBox="0 0 32 32"><rect x="2" y="4" width="28" height="19" rx="2"/><path d="M11 29h10m-5-6v6"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 80 80"><path d="M4 24V4h20m32 0h20v20m0 32v20H56m-32 0H4V56"/><path d="M18 18h16v16H18zM46 18h16v16H46zM18 46h16v16H18zM46 46h8v8h-8zM62 46v8h-8v8h-8m16-4v4M26 22v8m28-8v8M26 50v8"/><path d="M40 18v8m0 8v6H18m16 0v6m6-6h22m-22 8v14m8-22v6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 21v-4c-4 1-5-2-5-2m11 6v-4a4 4 0 0 0-1-3c3 0 6-2 6-5a5 5 0 0 0-1-3 5 5 0 0 0 0-4s-2 0-4 2a12 12 0 0 0-6 0C7 2 5 2 5 2a5 5 0 0 0 0 4 5 5 0 0 0-1 3c0 3 3 5 6 5a4 4 0 0 0-1 3"/></symbol>
+  </svg>
+  <header class="site-header">
+    <nav class="nav-pill" aria-label="Main navigation">
+      <a class="wordmark" href="../index.html" aria-label="Eman Abdul Malik, back to portfolio">Eman<span class="wordmark-full"> Abdul Malik</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html#skills">Skills</a><a href="../index.html#projects">Projects</a><a href="../index.html#about">About</a><a href="../index.html#education">Education</a><a href="../index.html#contact">Contact</a>
+        <a class="nav-resume" href="https://drive.google.com/file/d/1JL720Y3wZwcoP-n_9x69w9R3gxcrWwNT/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" class="project-main section-width">
+    <section class="detail-intro" aria-labelledby="detail-title">
+      <a class="project-back" href="../index.html#projects"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> Back to projects</a>
+      <p class="eyebrow">01 / Android app</p>
+      <h1 id="detail-title">SecureScan</h1>
+      <p class="detail-summary">A native Android QR scanner that reads codes from the camera or an image and identifies whether web links use HTTP or HTTPS.</p>
+      <div class="detail-meta"><div><span>Project</span><p>Android application</p></div><div><span>Status</span><p>Android preview available</p></div></div>
+    </section>
+    <figure class="detail-cover">
+      <div class="work-cover work-cover-laptop securescan-screen-cover"><img class="laptop-cover-image" src="../assets/securescan-all-screens.png" alt="Illustrative SecureScan screen journey: splash, three onboarding steps, and QR scanner" loading="lazy"></div>
+      <figcaption>Illustrative screen showcase: splash, onboarding and QR scanning. <a href="../assets/securescan-all-screens.png" target="_blank" rel="noopener">View full image ↗</a></figcaption>
+    </figure>
+    <section class="detail-overview" aria-labelledby="overview-title">
+      <div><p class="eyebrow">The project</p><h2 id="overview-title">A closer look.</h2></div>
+      <div class="project-story">
+        <p class="overview-copy">SecureScan is a native Android app for reading QR codes and understanding one useful detail about a scanned web address: whether it uses HTTPS or unencrypted HTTP. Users can scan with the device camera or choose an image from the gallery, then receive clear feedback in the app.</p>
+        <p class="overview-copy">The app focuses on URL scheme classification—not website reputation. An HTTPS result means the link uses an encrypted connection; it does not guarantee that the destination is safe or trustworthy. SecureScan does not check for phishing or malware and does not open scanned links automatically.</p>
+        <h3>Scan and understand</h3>
+        <ul class="project-feature-list">
+          <li><strong>Live camera scanning:</strong> Uses CameraX to analyze the camera preview and detect barcodes.</li>
+          <li><strong>Gallery image scanning:</strong> Select an image from the device and process it with the same barcode-scanning flow.</li>
+          <li><strong>HTTP and HTTPS results:</strong> Parses scanned values as web addresses and classifies supported links by their URL scheme.</li>
+          <li><strong>Clear scan feedback:</strong> Reports invalid web links, empty scans, processing failures, or denied camera permission.</li>
+          <li><strong>Onboarding:</strong> An animated launch screen introduces the app, with options to continue or skip.</li>
+        </ul>
+        <h3>How it works</h3>
+        <p class="overview-copy">Android Activities and XML layouts provide the launch, onboarding, and scan screens. CameraX supplies the live preview and image-analysis frames; Google ML Kit Barcode Scanning decodes barcodes from both camera input and gallery images. A Java URI classifier checks the decoded value and the scanning screen presents the result.</p>
+        <p class="overview-copy">Camera work follows the Activity lifecycle and processes frames on a single-thread executor. The analyzer keeps only the latest frame and guards against overlapping processing, helping avoid a queue of stale frames and repeated scan results.</p>
+        <h3>Built with</h3>
+        <ul class="work-tech" aria-label="Technologies"><li>Java</li><li>Android</li><li>CameraX</li><li>Google ML Kit</li><li>XML</li><li>Gradle</li></ul>
+        <p class="overview-copy">The URL classifier has unit tests for HTTPS, HTTP, and invalid or non-web values. SecureScan is a self-contained Android client with no separate backend or database.</p>
+      </div>
+    </section>
+    <section class="detail-preview" id="project-preview" aria-labelledby="preview-title">
+      <div class="preview-heading"><div><p class="eyebrow">Interactive preview</p><h2 id="preview-title">Try SecureScan.</h2></div><span class="preview-status">No camera needed</span></div>
+      <p class="hotel-preview-note">A browser adaptation of the Android app’s QR scanning and link checks. Images stay in your browser; nothing is uploaded.</p>
+      <div class="scan-demo">
+        <div class="scan-phone">
+          <div class="scan-speaker" aria-hidden="true"></div>
+          <h3>Secure Scan</h3><p class="scan-tagline">One QR code at a time.</p>
+          <div class="scan-viewfinder"><img id="scan-image" src="../assets/securescan/https.gif" alt="Sample QR code containing https://example.com"></div>
+          <button class="scan-primary" id="scan-run" type="button">Scan QR code</button>
+          <label class="scan-upload" for="scan-file">Import your QR image</label>
+          <input id="scan-file" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml">
+          <div id="scan-result" class="scan-result" role="status" aria-live="polite"><strong>Ready to scan</strong><p>Choose a sample or import an image, then scan.</p></div>
+        </div>
+        <div class="scan-guide">
+          <p class="eyebrow">Give it a try</p><h3>A real QR scan.<br>No camera required.</h3>
+          <p>Pick a sample and press <strong>Scan QR code</strong>. The demo reads the pixels in the image and displays its contents.</p>
+          <fieldset class="scan-samples"><legend>Choose a test QR</legend>
+            <label><input type="radio" name="qr-sample" value="https" checked> HTTPS link</label>
+            <label><input type="radio" name="qr-sample" value="http"> HTTP link</label>
+            <label><input type="radio" name="qr-sample" value="text"> Plain text</label>
+          </fieldset>
+          <a id="scan-download" href="../assets/securescan/https.gif" download="securescan-test-https.gif">Download this test QR ↓</a>
+          <p class="scan-note">HTTPS encrypts a connection; it does not prove a website is safe. This demo does not check for phishing or malware, and never opens scanned links automatically.</p>
+        </div>
+      </div>
+      <div class="demo-placeholder">
+        <div class="preview-device"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></div>
+        <h3>Run the Android app</h3>
+        <p>Download the preview build to try SecureScan on an Android device running Android 7.0 or newer. This is a debug build of the native app, not a browser demo.</p>
+        <a class="button button-primary" href="../downloads/securescan/SecureScan-preview.apk" download>Download Android APK <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+      </div>
+    </section>
+    <nav class="project-pagination" aria-label="More projects"><a href="../index.html#projects">All projects</a><a class="next-project" href="eduoak.html"><span>Next project</span><strong>EduOak Consulting <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></strong></a></nav>
+  </main>
+  <footer class="detail-footer section-width"><a href="../index.html">Eman Abdul Malik<span>.</span></a><p>© 2026</p><div><a href="https://github.com/eman-110" target="_blank" rel="noopener noreferrer">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a><a href="https://www.linkedin.com/in/eman-abdul-malik-90b042333" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
+  <script src="../assets/vendor/jsQR.js" defer></script>
+  <script src="../securescan-demo.js" defer></script>
+</body>
+</html>

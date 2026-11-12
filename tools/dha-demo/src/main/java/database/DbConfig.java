@@ -1,0 +1,1 @@
+package database; public final class DbConfig {}

@@ -1,0 +1,1 @@
+package service; public final class SyncService { public void start(){} public void stop(){} }

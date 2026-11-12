@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1400.0" styleClass="dashboard-root" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReportController">
+    <children>
+        <!-- Header -->
+        <Label text="Report" styleClass="dashboard-title" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #1a1464;" />
+
+        <StackPane AnchorPane.topAnchor="90.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+            <children>
+                <!-- 1. Selection View (Main Landing) -->
+                <HBox fx:id="selectionView" alignment="CENTER" spacing="50" visible="true">
+                    <children>
+                        <Button text="Auction" onAction="#handleAuctionSelect"
+                                prefWidth="260.0" prefHeight="140.0"
+                                style="-fx-background-radius: 32; -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8); -fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: 700; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0, 0, 8);" />
+
+                        <Button text="Overall" onAction="#handleOverallSelect"
+                                prefWidth="260.0" prefHeight="140.0"
+                                style="-fx-background-radius: 32; -fx-background-color: linear-gradient(to bottom right, #14015c, #8a82c8); -fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: 700; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.12), 20, 0, 0, 8);" />
+                    </children>
+                </HBox>
+
+                <!-- 2. Date Selection View -->
+                <VBox fx:id="dateSelectionView" alignment="CENTER" spacing="30" visible="false" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 5);" maxHeight="400" maxWidth="600">
+                    <children>
+                        <Label fx:id="lblSelectionTitle" text="Auction" style="-fx-font-size: 24px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                        <HBox alignment="CENTER" spacing="20">
+                            <Label text="Starting Date" style="-fx-font-size: 16px; -fx-text-fill: #5a5c69; -fx-font-weight: bold;" prefWidth="120" />
+                            <DatePicker fx:id="startDatePicker" prefWidth="200" style="-fx-font-size: 14px;" promptText="Select starting date" />
+                        </HBox>
+                         <HBox alignment="CENTER" spacing="20">
+                            <Label text="Ending Date" style="-fx-font-size: 16px; -fx-text-fill: #5a5c69; -fx-font-weight: bold;" prefWidth="120" />
+                            <DatePicker fx:id="endDatePicker" prefWidth="200" style="-fx-font-size: 14px;" promptText="Select ending date" />
+                        </HBox>
+                        <HBox alignment="CENTER" spacing="30">
+                             <Button text="Search" onAction="#handleSearch"
+                                    prefWidth="150" prefHeight="40"
+                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 8; -fx-cursor: hand;" />
+                             <Button text="Cancel" onAction="#handleCancelToSelection"
+                                    prefWidth="150" prefHeight="40"
+                                    style="-fx-background-color: white; -fx-text-fill: #5a5c69; -fx-border-color: #5a5c69; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 16px; -fx-cursor: hand;" />
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets top="40" right="40" bottom="40" left="40"/>
+                    </padding>
+                </VBox>
+
+                <!-- 3. Result View (Table) -->
+                <VBox fx:id="resultView" spacing="20" visible="false" styleClass="card-pane">
+                    <children>
+                        <!-- Result Header -->
+                        <HBox alignment="CENTER_LEFT" spacing="10">
+                            <Label text="Issued Item Detail" style="-fx-font-size: 20px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                            <Region HBox.hgrow="ALWAYS" />
+                             <Button text="Print" onAction="#handleAuctionPrint"
+                                    prefWidth="120" prefHeight="35"
+                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5;" />
+                            <Button text="Add" onAction="#handleAddItemView"
+                                    prefWidth="120" prefHeight="35"
+                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 5;" />
+                        </HBox>
+
+                        <TableView fx:id="reportTable" VBox.vgrow="ALWAYS" style="-fx-font-size: 14px; -fx-padding: 5;">
+                            <columns>
+                                <TableColumn fx:id="colItemName" text="Item Name" minWidth="300" prefWidth="340" style="-fx-alignment: CENTER_LEFT;"/>
+                                <TableColumn fx:id="colQuantity" text="Issued Quantity" minWidth="120" prefWidth="150" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colIssuedDate" text="Issued Date" minWidth="150" prefWidth="180" style="-fx-alignment: CENTER;"/>
+                                <TableColumn fx:id="colAction" text="Action" minWidth="150" prefWidth="200" style="-fx-alignment: CENTER;"/>
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                    <padding>
+                        <Insets top="20" right="30" bottom="20" left="30"/>
+                    </padding>
+                </VBox>
+
+                <!-- 4. Add Item View -->
+                 <VBox fx:id="addItemView" alignment="CENTER" spacing="30" visible="false" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 5);" maxHeight="400" maxWidth="600">
+                    <children>
+                        <Label text="Add Auction Issued Item" style="-fx-font-size: 24px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+
+                        <HBox alignment="CENTER" spacing="20">
+                            <Label text="Item Name" style="-fx-font-size: 16px; -fx-text-fill: #5a5c69; -fx-font-weight: bold;" prefWidth="100" />
+                            <TextField fx:id="inputItemName" prefWidth="250" style="-fx-font-size: 14px;" promptText="Enter item name" />
+                        </HBox>
+                         <HBox alignment="CENTER" spacing="20">
+                            <Label text="Quantity" style="-fx-font-size: 16px; -fx-text-fill: #5a5c69; -fx-font-weight: bold;" prefWidth="100" />
+                            <TextField fx:id="inputQuantity" prefWidth="250" style="-fx-font-size: 14px;" promptText="Enter quantity" />
+                        </HBox>
+                        
+                        <HBox alignment="CENTER" spacing="30">
+                             <Button text="Save" onAction="#handleSaveItem"
+                                    prefWidth="150" prefHeight="40"
+                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 8; -fx-cursor: hand;" />
+                             <Button text="Cancel" onAction="#handleCancelAddItem"
+                                    prefWidth="150" prefHeight="40"
+                                    style="-fx-background-color: white; -fx-text-fill: #5a5c69; -fx-border-color: #5a5c69; -fx-border-radius: 8; -fx-background-radius: 8; -fx-font-size: 16px; -fx-cursor: hand;" />
+                        </HBox>
+                    </children>
+                    <padding>
+                        <Insets top="40" right="40" bottom="40" left="40"/>
+                    </padding>
+                </VBox>
+
+                <!-- 5. Overall Result View -->
+                <VBox fx:id="overallResultView" spacing="10" visible="false">
+                    <children>
+                        <!-- Header with Print Button -->
+                        <HBox alignment="CENTER_RIGHT" spacing="10">
+                            <Button text="Print" onAction="#handlePrint"
+                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-size: 14px; -fx-pref-width: 100;" />
+                        </HBox>
+
+                        <HBox fx:id="overallTablesContainer" spacing="30" VBox.vgrow="ALWAYS">
+                            <children>
+                                <!-- Issued Section Box -->
+                                <VBox fx:id="issuedSectionBox" HBox.hgrow="ALWAYS" spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #1a1464; -fx-border-radius: 15; -fx-border-width: 2; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label text="Issued Item Detail" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                                            <Region HBox.hgrow="ALWAYS" />
+                                            <Button text="Add" onAction="#handleAddIssued"
+                                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                                        </HBox>
+                                        <TableView fx:id="overallIssuedTable" VBox.vgrow="ALWAYS" style="-fx-background-insets: 0; -fx-padding: 0;">
+                                            <columns>
+                                                <TableColumn fx:id="colOvIssuedName" text="Item Name" />
+                                                <TableColumn fx:id="colOvIssuedQty" text="Quantity" />
+                                                <TableColumn fx:id="colOvIssuedRemarks" text="Remarks" />
+                                                <TableColumn fx:id="colOvIssuedAction" text="Action" />
+                                            </columns>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                            </columnResizePolicy>
+                                        </TableView>
+                                    </children>
+                                    <padding>
+                                        <Insets top="20" right="20" bottom="20" left="20"/>
+                                    </padding>
+                                </VBox>
+
+                                <!-- Received Section Box -->
+                                <VBox fx:id="receivedSectionBox" HBox.hgrow="ALWAYS" spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #1a1464; -fx-border-radius: 15; -fx-border-width: 2; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);">
+                                    <children>
+                                        <HBox alignment="CENTER_LEFT">
+                                            <Label text="Received Item Detail" style="-fx-font-size: 18px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                                            <Region HBox.hgrow="ALWAYS" />
+                                            <Button text="Add" onAction="#handleAddReceived"
+                                                    style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" />
+                                        </HBox>
+                                        <TableView fx:id="overallReceivedTable" VBox.vgrow="ALWAYS" style="-fx-background-insets: 0; -fx-padding: 0;">
+                                            <columns>
+                                                <TableColumn fx:id="colOvReceivedName" text="Item Name" />
+                                                <TableColumn fx:id="colOvReceivedQty" text="Quantity" />
+                                                <TableColumn fx:id="colOvReceivedFrom" text="Received From" />
+                                                <TableColumn fx:id="colOvReceivedDetail" text="Detail" />
+                                                <TableColumn fx:id="colOvReceivedRemarks" text="Remarks" />
+                                                <TableColumn fx:id="colOvReceivedAction" text="Action" />
+                                            </columns>
+                                            <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                            </columnResizePolicy>
+                                        </TableView>
+                                    </children>
+                                    <padding>
+                                        <Insets top="20" right="20" bottom="20" left="20"/>
+                                    </padding>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding>
+                         <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                </VBox>
+
+                <!-- 6. Add Issued Item View -->
+                <VBox fx:id="addIssuedView" alignment="CENTER" spacing="20" visible="false" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 5);" maxHeight="450" maxWidth="600">
+                     <children>
+                        <Label text="Add Issued Item" style="-fx-font-size: 24px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                        <VBox spacing="10" maxWidth="400">
+                             <Label text="Item Name" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputIssuedName" promptText="Enter item name"/>
+                             
+                             <Label text="Quantity" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputIssuedQty" promptText="Enter quantity"/>
+
+                             <Label text="Remarks" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputIssuedRemarks" promptText="Enter remarks"/>
+                        </VBox>
+                        <HBox alignment="CENTER" spacing="20">
+                             <Button text="Save" onAction="#handleSaveIssued" style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 100;"/>
+                             <Button text="Cancel" onAction="#handleCancelAdd" style="-fx-background-color: white; -fx-text-fill: #5a5c69; -fx-border-color: #5a5c69; -fx-border-radius: 5; -fx-pref-width: 100;"/>
+                        </HBox>
+                     </children>
+                     <padding><Insets bottom="30" left="30" right="30" top="30"/></padding>
+                </VBox>
+
+                <!-- 7. Add Received Item View -->
+                <VBox fx:id="addReceivedView" alignment="CENTER" spacing="20" visible="false" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 5);" maxHeight="550" maxWidth="600">
+                     <children>
+                        <Label text="Add Received Item" style="-fx-font-size: 24px; -fx-text-fill: #1a1464; -fx-font-weight: bold;" />
+                        <VBox spacing="10" maxWidth="400">
+                             <Label text="Item Name" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputReceivedName" promptText="Enter item name"/>
+                             
+                             <Label text="Quantity" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputReceivedQty" promptText="Enter quantity"/>
+
+                             <Label text="Received From" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputReceivedFrom" promptText="Enter Received From"/>
+
+                             <Label text="Detail" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputReceivedDetail" promptText="Enter Received Detail"/>
+
+                             <Label text="Remarks" style="-fx-font-weight: bold; -fx-text-fill: #5a5c69;"/>
+                             <TextField fx:id="inputReceivedRemarks" promptText="Enter remarks"/>
+                        </VBox>
+                        <HBox alignment="CENTER" spacing="20">
+                             <Button text="Save" onAction="#handleSaveReceived" style="-fx-background-color: #1a1464; -fx-text-fill: white; -fx-font-size: 14px; -fx-pref-width: 100;"/>
+                             <Button text="Cancel" onAction="#handleCancelAdd" style="-fx-background-color: white; -fx-text-fill: #5a5c69; -fx-border-color: #5a5c69; -fx-border-radius: 5; -fx-pref-width: 100;"/>
+                        </HBox>
+                     </children>
+                     <padding><Insets bottom="30" left="30" right="30" top="30"/></padding>
+                </VBox>
+
+            </children>
+        </StackPane>
+    </children>
+</AnchorPane>

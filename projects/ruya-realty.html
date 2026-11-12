@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151516">
+  <meta name="description" content="A cross-platform real estate app prototype built with React Native and Expo, exploring welcome, onboarding and account flows.">
+  <title>Ruya Realty | Eman Abdul Malik</title>
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../projects.css">
+  <script src="../script.js" defer></script>
+</head>
+<body class="project-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 32 32"><rect x="8" y="2" width="16" height="28" rx="3"/><path d="M13 6h6m-4 20h2"/></symbol>
+    <symbol id="i-desktop" viewBox="0 0 32 32"><rect x="2" y="4" width="28" height="19" rx="2"/><path d="M11 29h10m-5-6v6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 21v-4c-4 1-5-2-5-2m11 6v-4a4 4 0 0 0-1-3c3 0 6-2 6-5a5 5 0 0 0-1-3 5 5 0 0 0 0-4s-2 0-4 2a12 12 0 0 0-6 0C7 2 5 2 5 2a5 5 0 0 0 0 4 5 5 0 0 0-1 3c0 3 3 5 6 5a4 4 0 0 0-1 3"/></symbol>
+    <symbol id="i-react-native" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="14" ry="5"/><ellipse cx="16" cy="16" rx="14" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="14" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2" fill="currentColor" stroke="none"/></symbol>
+  </svg>
+  <header class="site-header">
+    <nav class="nav-pill" aria-label="Main navigation">
+      <a class="wordmark" href="../index.html" aria-label="Eman Abdul Malik, back to portfolio">Eman<span class="wordmark-full"> Abdul Malik</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="../index.html#skills">Skills</a><a href="../index.html#projects">Projects</a><a href="../index.html#about">About</a><a href="../index.html#education">Education</a><a href="../index.html#contact">Contact</a>
+        <a class="nav-resume" href="https://drive.google.com/file/d/1JL720Y3wZwcoP-n_9x69w9R3gxcrWwNT/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+      </div>
+    </nav>
+  </header>
+  <main id="main" class="project-main section-width">
+    <section class="detail-intro" aria-labelledby="detail-title">
+      <a class="project-back" href="../index.html#projects"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg> Back to projects</a>
+      <p class="eyebrow">06 / Cross-platform mobile app</p>
+      <h1 id="detail-title">Ruya Realty</h1>
+      <p class="detail-summary">A cross-platform real estate app prototype built with React Native and Expo, exploring welcome, onboarding and account flows.</p>
+      <div class="detail-meta"><div><span>Project</span><p>Cross-platform mobile application</p></div><div><span>Status</span><p>UI prototype · In development</p></div></div>
+      
+    </section>
+
+    <figure class="detail-cover"><div class="work-cover work-cover-laptop ruya-screen-cover"><img class="laptop-cover-image" src="../assets/ruya-realty-cover.png" alt="Illustrative Ruya Realty welcome, onboarding and login screens" loading="lazy"></div>
+      <figcaption>Illustrative concept artwork inspired by the project, not native app screenshots. <a href="../assets/ruya-realty-cover.png" target="_blank" rel="noopener">View full image ↗</a></figcaption>
+    </figure>
+    <section class="detail-overview" aria-labelledby="overview-title">
+      <div><p class="eyebrow">The project</p><h2 id="overview-title">A place to begin.</h2></div>
+      <div class="project-story">
+        <p class="overview-copy">Ruya Realty explores the first steps of a mobile real estate experience: introducing the brand, helping people discover the idea of finding a home, and presenting account entry screens. Navy tones, architectural photography and rounded panels give the interface a calm, welcoming feel.</p>
+        <p class="overview-copy">This is an early UI-focused project. The broader vision is to help people browse, buy and rent homes, apartments and studios. Property search, listing management and transactions are not complete in the current source.</p>
+        <h3>What's in the prototype</h3>
+        <ul class="project-feature-list">
+          <li><strong>Welcome screen:</strong> Architectural photography with a curved navy brand panel.</li>
+          <li><strong>Two onboarding steps:</strong> Introductions to finding a home and listing a property, with next and skip navigation.</li>
+          <li><strong>Account screens:</strong> Entry, login, signup and password recovery interfaces.</li>
+          <li><strong>Responsive layouts:</strong> Percentage-based sizing and consistent visual patterns across mobile screens.</li>
+        </ul>
+        <h3>How it's built</h3>
+        <p class="overview-copy">React Native components and JavaScript define the screens, Expo provides the application setup, and Expo Router organizes navigation. The source includes an initial login API integration, but the complete account and property experience is unfinished. The homepage currently repeats an onboarding screen.</p>
+        <h3>Built with</h3><ul class="work-tech" aria-label="Technologies"><li>React Native</li><li>Expo</li><li>Expo Router</li><li>JavaScript</li></ul>
+      </div>
+    </section>
+    <section class="detail-preview" id="project-preview" aria-labelledby="preview-title">
+      <div class="preview-heading"><div><p class="eyebrow">Interactive UI preview</p><h2 id="preview-title">Step inside Ruya.</h2></div><span class="preview-status">UI prototype</span></div>
+      <p class="hotel-preview-note">A browser adaptation of the welcome and onboarding flow, using artwork from the project. Account screens are simplified visual previews only; no information is collected or sent. Onboarding copy describes the planned product.</p>
+      <div class="ruya-demo">
+        <div class="ruya-phone" id="ruya-screen" aria-label="Ruya Realty screen preview"></div>
+        <div class="ruya-guide"><p class="eyebrow">The first impression</p><h3>Find your next space.<br>Feel at home.</h3><p>Move through the introduction, or jump to a screen below. Explore the interface built so far.</p>
+          <div class="ruya-controls" role="group" aria-label="Choose preview screen">
+            <button type="button" data-ruya="welcome" aria-pressed="true">Welcome</button><button type="button" data-ruya="find" aria-pressed="false">Find a home</button><button type="button" data-ruya="list" aria-pressed="false">List a property</button><button type="button" data-ruya="account" aria-pressed="false">Account</button><button type="button" data-ruya="login" aria-pressed="false">Login</button>
+          </div><p class="ruya-caption" id="ruya-caption" role="status" aria-live="polite"></p><p>Property listings, seller contact and account services remain in development.</p>
+        </div>
+      </div>
+      <noscript><p>Enable JavaScript to explore the walkthrough. The screen showcase above is available without JavaScript.</p></noscript>
+    </section>
+    <nav class="project-pagination" aria-label="More projects"><a href="../index.html#projects">All projects</a><a class="next-project" href="securescan.html"><span>Next project</span><strong>SecureScan <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></strong></a></nav>
+  </main>
+  <footer class="detail-footer section-width"><a href="../index.html">Eman Abdul Malik<span>.</span></a><p>© 2026</p><div><a href="https://github.com/eman-110" target="_blank" rel="noopener noreferrer">GitHub <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a><a href="https://www.linkedin.com/in/eman-abdul-malik-90b042333" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></a></div></footer>
+  <script src="../ruya-realty-demo.js" defer></script>
+</body>
+</html>

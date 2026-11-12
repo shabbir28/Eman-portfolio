@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="695.0" prefWidth="1050.0" styleClass="dashboard-root" stylesheets="/css/dashboard.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DashboardController">
+
+    <children>
+
+        <!-- Header -->
+        <Label styleClass="dashboard-title" text="Dashboard" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0" />
+
+        <!-- Filter Buttons -->
+        <HBox layoutX="660.0" layoutY="79.0" spacing="10.0" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="79.0">
+            <children>
+                <Button fx:id="storeButton" mnemonicParsing="false" onAction="#handleFilterSelection" styleClass="filter-button" text="Store" />
+                <Button fx:id="userButton" mnemonicParsing="false" onAction="#handleFilterSelection" styleClass="filter-button" text="User" />
+                <Button fx:id="auctionButton" mnemonicParsing="false" onAction="#handleFilterSelection" styleClass="filter-button" text="Auction" />
+            </children>
+        </HBox>
+
+        <!-- Low Stock Card -->
+        <AnchorPane prefHeight="360.0" prefWidth="520.0" styleClass="low-stock-card" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="150.0">
+            <children>
+                <VBox spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                    <children>
+                        <Label fx:id="cardTitleLabel" styleClass="card-title" text="Low Stock" />
+
+                        <HBox spacing="10.0" styleClass="table-header" />
+
+                        <TableView fx:id="lowStockTable" prefHeight="260.0" styleClass="low-stock-table">
+                            <columns>
+                                <TableColumn fx:id="itemNameColumn" prefWidth="340.0" text="Item Name" />
+                                <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </AnchorPane>
+
+        <!-- Metrics Grid -->
+        <GridPane fx:id="metricsGrid" hgap="20.0" vgap="20.0" AnchorPane.leftAnchor="580.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="200.0">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50.0" />
+                <ColumnConstraints percentWidth="50.0" />
+            </columnConstraints>
+
+            <children>
+                <VBox fx:id="metricCard1" prefHeight="67.0" prefWidth="210.0" spacing="10.0" styleClass="metric-card gradient-1" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <Label fx:id="totalStoreItemsLabel" styleClass="metric-value" text="0" />
+                    <Label styleClass="metric-label" wrapText="true" text="Total Store Item" />
+                </VBox>
+
+                <VBox fx:id="metricCard2" spacing="10.0" styleClass="metric-card gradient-2" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <Label fx:id="totalInStoreLabel" styleClass="metric-value" text="0" />
+                    <Label styleClass="metric-label" wrapText="true" text="Total In Store Item" />
+                </VBox>
+
+                <VBox fx:id="metricCard3" prefHeight="48.0" prefWidth="210.0" spacing="10.0" styleClass="metric-card gradient-3" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <Label fx:id="totalTemporaryAssignedLabel" styleClass="metric-value" text="0" />
+                    <Label styleClass="metric-label" wrapText="true" text="Total Temporary Assigned Item" />
+                </VBox>
+
+                <VBox fx:id="metricCard4" spacing="10.0" styleClass="metric-card gradient-4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <Label fx:id="totalPermanentAssignedLabel" styleClass="metric-value" text="0" />
+                    <Label styleClass="metric-label" wrapText="true" text="Total Permanent Assigned Item" />
+                </VBox>
+            </children>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+    </children>
+</AnchorPane>
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="520" prefWidth="900" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LowStockViewController">
+    <children>
+        <VBox spacing="10" alignment="TOP_CENTER" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10" AnchorPane.bottomAnchor="10">
+            <children>
+                <HBox alignment="CENTER_RIGHT">
+                    <TextField fx:id="searchField" promptText="Search product, supplier, order" prefWidth="250" styleClass="text-field" />
+                </HBox>
+                
+                <TableView fx:id="tableView" prefHeight="440" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colItem" text="Item Name" prefWidth="500" styleClass="align-left" />
+                        <TableColumn fx:id="colLimit" text="Low Stock Limit" prefWidth="150" styleClass="align-center" />
+                        <TableColumn fx:id="colAction" text="Action" prefWidth="150" styleClass="align-center" />
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+        <!-- Back button container -->
+        <AnchorPane prefHeight="40.0" AnchorPane.bottomAnchor="10.0">
+            <children>
+                <Button fx:id="backButton" text="Back" onAction="#handleBack" styleClass="primary-button" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0" />
+            </children>
+        </AnchorPane>
+     </children>
+ </AnchorPane>
