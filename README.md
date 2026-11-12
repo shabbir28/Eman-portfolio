@@ -40,4 +40,6 @@ SecureScan's description and Java/XML stack were checked against its public GitH
 
 ## Static hosting
 
-Upload `index.html`, `styles.css`, `projects.css`, `script.js`, and the `assets` and `projects` directories to any static host (for example GitHub Pages). Keep their relative paths intact. No server build is needed. The website is currently prepared for local use; no deployment is configured.
+Vercel uses `vercel.json` to select the Other framework preset, skip dependency installation, and run `node tools/build-vercel.mjs`. The command copies the site pages, scripts, assets, and demo downloads to `dist/` for static serving.
+
+For another static host, run the same command and upload the contents of `dist/`.
